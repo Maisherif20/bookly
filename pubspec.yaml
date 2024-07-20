@@ -37,10 +37,18 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_screenutil: ^5.9.3
   google_fonts: ^6.2.1
+  either_dart: ^1.0.0
+  dio: ^5.5.0+1
+  http: ^1.2.2
+  injectable: ^2.4.2
+  get_it: ^7.7.0
+  flutter_bloc: ^8.1.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  injectable_generator:
+  build_runner:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -76,10 +84,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: GTSectraFine
+      fonts:
+      - asset: assets/fonts/OnlineWebFonts_COM_4e2d1925e08a8a0cf22711868ad7b782/GT Sectra Fine Regular/GT Sectra Fine Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

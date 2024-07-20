@@ -1,4 +1,6 @@
+import 'package:bookly/presentation_layer/ui/book_Details/bookDetailsScreen.dart';
 import 'package:bookly/presentation_layer/ui/homePage/home_page.dart';
+import 'package:bookly/presentation_layer/ui/search/searchWidget.dart';
 import 'package:bookly/presentation_layer/ui/splashScreen/splashScreen.dart';
 import 'package:bookly/presentation_layer/ui/test.dart';
 import 'package:bookly/routes/route.dart';
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
           RouteScreen.splashRoute:(context) => SplashScreen(),
           RouteScreen.HomeScreen:(context) => HomePage(),
           RouteScreen.Test:(context) => Test(),
+          RouteScreen.searchScreen:(context) => SearchScreen(),
         },
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -33,7 +36,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: false,
           textTheme: GoogleFonts.montserratTextTheme(),
         ),
-        initialRoute: RouteScreen.splashRoute,
+        initialRoute: RouteScreen.HomeScreen,
       ),
     );
   }
