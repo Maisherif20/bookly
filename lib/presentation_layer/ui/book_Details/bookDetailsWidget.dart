@@ -26,7 +26,7 @@ class BookDetailsWidget extends StatelessWidget {
       color: Color.fromRGBO(16, 11, 32, 1),
       child: Column(
         children: [
-          Image.asset(bookImage, width: 300.w,height: 300.h,),
+          Image.network(bookImage, width: 300.w,height: 300.h,),
           Text(
             textAlign: TextAlign.center,
             bookTitle,

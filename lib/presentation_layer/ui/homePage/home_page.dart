@@ -1,10 +1,9 @@
 import 'package:bookly/routes/route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../customWidget/customBookDetails.dart';
-import 'NewestBookView.dart';
+import '../allBooks/allBooksView.dart';
+import '../newestBooks/NewestBookView.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -40,15 +39,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.32,
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        return Image.asset("assets/images/Book 2 Hightligh.png");
-                      }),
-                ),
+                AllBooksView(),
                 Text(
                   "Best Seller",
                   textAlign: TextAlign.start,

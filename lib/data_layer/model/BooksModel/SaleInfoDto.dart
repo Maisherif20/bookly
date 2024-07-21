@@ -1,5 +1,5 @@
 import '../../../domain_layer/Entities/BookModel/SaleInfo.dart';
-import 'ListPriceDto.dart';
+// import 'ListPriceDto.dart';
 import 'RetailPriceDto.dart';
 import 'OffersDto.dart';
 
@@ -8,7 +8,7 @@ class SaleInfoDto {
       this.country, 
       this.saleability, 
       this.isEbook, 
-      this.listPrice, 
+      // this.listPrice,
       this.retailPrice, 
       this.buyLink, 
       this.offers,});
@@ -17,7 +17,7 @@ class SaleInfoDto {
     country = json['country'];
     saleability = json['saleability'];
     isEbook = json['isEbook'];
-    listPrice = json['listPrice'];
+    // listPrice = json['listPrice'];
     retailPrice = json['retailPrice'] != null ? RetailPriceDto.fromJson(json['retailPrice']) : null;
     buyLink = json['buyLink'];
     if (json['offers'] != null) {
@@ -30,7 +30,7 @@ class SaleInfoDto {
   String? country;
   String? saleability;
   bool? isEbook;
-  ListPriceDto? listPrice;
+  // ListPriceDto? listPrice;
   RetailPriceDto? retailPrice;
   String? buyLink;
   List<OffersDto>? offers;
@@ -40,7 +40,7 @@ class SaleInfoDto {
     map['country'] = country;
     map['saleability'] = saleability;
     map['isEbook'] = isEbook;
-    map['listPrice'] = listPrice;
+    // map['listPrice'] = listPrice;
     if (retailPrice != null) {
       map['retailPrice'] = retailPrice?.toJson();
     }
@@ -55,7 +55,7 @@ class SaleInfoDto {
       country:country,
       saleability: saleability,
       isEbook: isEbook,
-      listPrice: listPrice?.toListPrice(),
+      // listPrice: listPrice?.toListPrice(),
       retailPrice: retailPrice?.toRetailPrice(),
       offers: offers?.map((e) => e.toOffers()).toList(),
     );

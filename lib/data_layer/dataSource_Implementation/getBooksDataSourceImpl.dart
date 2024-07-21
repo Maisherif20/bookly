@@ -11,14 +11,42 @@ class GetBooksDataSourceImpl  extends GetBooksDataSource{
   @override
   Future<Either<BookModelDto, String>> getNewestBooks() async{
       try {
-        var response = await apiManager.getRequest(endPoint: "volumes?Filtering=free-ebooks&q=programming&orderBy=newest");
-        if (response.statusMessage != null) {
-          return Right(response.statusMessage!);
+        var response = await apiManager.getNewestBooks();
+        if (response.statusMsg != null) {
+          return Right(response.message!);
         } else {
-          return Left(BookModelDto.fromJson(response.data));
+          return Left(response);
         }
       } catch (e) {
         return Right(e.toString()); // error from server
       }
+  }
+
+  @override
+  Future<Either<BookModelDto, String>> getSimilarBooks() async{
+     try {
+    var response = await apiManager.getSimilarBooks();
+    if (response.statusMsg != null) {
+    return Right(response.message!);
+    } else {
+    return Left(response);
+    }
+    } catch (e) {
+    return Right(e.toString()); // error from server
+    }
+  }
+
+  @override
+  Future<Either<BookModelDto, String>> getAllBooks() async{
+    try {
+      var response = await apiManager.getAllBooks();
+      if (response.statusMsg != null) {
+        return Right(response.message!);
+      } else {
+        return Left(response);
+      }
+    } catch (e) {
+      return Right(e.toString()); // error from server
+    }
   }
 }

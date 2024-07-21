@@ -1,20 +1,20 @@
-import 'package:bookly/domain_layer/Entities/BookModel/BookModel.dart';
+import 'package:bookly/domain_layer/Entities/BookModel/Items.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../domain_layer/useCase/getBooksUseCase.dart';
 @injectable
-class NewestBooksViewModel extends Cubit<NewestBooksState> {
+class NewestBookViewModel extends Cubit<NewestBooksState> {
   GetBooksUseCase getBooksUseCase;
   @factoryMethod
 
-  NewestBooksViewModel({ required this.getBooksUseCase})
+  NewestBookViewModel({ required this.getBooksUseCase})
       : super(NewestBooksLoadingState());
   void newestBooks() async {
     emit(NewestBooksLoadingState());
     var newestBooks = await getBooksUseCase.invoke();
     try {
       newestBooks.fold((response) {
-        emit(NewestBooksSuccessState(bookModel: response));
+        emit(NewestBooksSuccessState(items: response.items));
       }, (error) {
         emit(NewestBooksErrorState(errorMessage: error));
       });
@@ -29,8 +29,8 @@ sealed class NewestBooksState {}
 class NewestBooksLoadingState extends NewestBooksState {}
 
 class NewestBooksSuccessState extends NewestBooksState {
-  BookModel bookModel;
-  NewestBooksSuccessState({required this.bookModel});
+  List<Items>? items;
+  NewestBooksSuccessState({required this.items});
 }
 class NewestBooksErrorState extends NewestBooksState {
   String errorMessage;

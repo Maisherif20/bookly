@@ -1,30 +1,30 @@
 import 'package:bookly/domain_layer/Entities/BookModel/Offers.dart';
 
-import 'ListPriceDto.dart';
+// import 'ListPriceDto.dart';
 import 'RetailPriceDto.dart';
 
 class OffersDto {
   OffersDto({
       this.finskyOfferType, 
-      this.listPrice, 
+      // this.listPrice,
       this.retailPrice, 
       this.giftable,});
 
   OffersDto.fromJson(dynamic json) {
     finskyOfferType = json['finskyOfferType'];
-    listPrice = json['listPrice'];
+    // listPrice = json['listPrice'];
     retailPrice = json['retailPrice'] != null ? RetailPriceDto.fromJson(json['retailPrice']) : null;
     giftable = json['giftable'];
   }
   num? finskyOfferType;
-  ListPriceDto? listPrice;
+  // ListPriceDto? listPrice;
   RetailPriceDto? retailPrice;
   bool? giftable;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['finskyOfferType'] = finskyOfferType;
-    map['listPrice'] = listPrice;
+    // map['listPrice'] = listPrice;
     if (retailPrice != null) {
       map['retailPrice'] = retailPrice?.toJson();
     }
@@ -34,7 +34,7 @@ class OffersDto {
   Offers toOffers(){
     return Offers(
       finskyOfferType: finskyOfferType,
-      listPrice: listPrice?.toListPrice(),
+      // listPrice: listPrice?.toListPrice(),
       retailPrice: retailPrice?.toRetailPrice(),
       giftable: giftable,
     );

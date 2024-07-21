@@ -1,5 +1,6 @@
 import 'package:bookly/presentation_layer/ui/book_Details/bookDetailsWidget.dart';
 import 'package:bookly/routes/route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -49,55 +50,60 @@ class BookDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: 70.w,
-                height: 115.h,
-                decoration: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(16),
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(bookImage),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width*0.5,
-                      child: Text(
-                        bookTitle,
-                        maxLines: 2,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,fontFamily: "GTSectraFine"),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5.h,
-                    ),
-                    Text(
-                      bookAuthor,
+                  width: 70.w,
+                  height: 115.h,
+                  child: Image.network(bookImage, fit: BoxFit.fill,)),
+              // Container(
+              //   width: 70.w,
+              //   height: 115.h,
+              //   decoration: BoxDecoration(
+              //     // borderRadius: BorderRadius.circular(16),
+              //     image: DecorationImage(
+              //       fit: BoxFit.fill,
+              //       image: Image.network(bookImage),
+              //     ),
+              //   ),
+              // ),
+              SizedBox(width: 10.w,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width*0.5,
+                    child: Text(
+                      bookTitle,
+                      maxLines: 2,
                       style: TextStyle(
-                        color: Colors.white,
-                      ),
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,fontFamily: "GTSectraFine"),
                     ),
-                    SizedBox(
-                      height: 5.h,
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  Text(
+                    bookAuthor,
+                    style: TextStyle(
+                      color: Colors.white,
                     ),
-                    Row(
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  Expanded(
+                    child: Row(
                       children: [
                         Text(
                           "$bookPrice €",
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold
-
+                    
                           ),
                         ),
                         SizedBox(
-                          width: 70.w,
+                          width: 40.w,
                         ),
                         // Spacer(),
                         Icon(
@@ -121,8 +127,8 @@ class BookDetails extends StatelessWidget {
                             )),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),

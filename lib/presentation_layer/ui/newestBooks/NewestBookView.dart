@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../DI/dI.dart';
 import '../customWidget/customBookDetails.dart';
-import 'NewestBooksViewModel.dart';
+import 'NewestBookViewModel.dart';
 
 class NewestBooksView extends StatefulWidget {
   const NewestBooksView({super.key});
@@ -11,7 +11,7 @@ class NewestBooksView extends StatefulWidget {
 }
 
 class _NewestBooksViewState extends State<NewestBooksView> {
-  NewestBooksViewModel newestBooksViewModel = getIt<NewestBooksViewModel>();
+  NewestBookViewModel newestBooksViewModel = getIt<NewestBookViewModel>();
   @override
   void initState() {
     newestBooksViewModel.newestBooks();
@@ -20,7 +20,7 @@ class _NewestBooksViewState extends State<NewestBooksView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewestBooksViewModel, NewestBooksState>(
+    return BlocBuilder<NewestBookViewModel, NewestBooksState>(
         bloc: newestBooksViewModel,
         builder: (context, state) {
           switch (state) {
@@ -34,21 +34,22 @@ class _NewestBooksViewState extends State<NewestBooksView> {
               {
                 return Column(
                   children: [
-                    Expanded(child: Text(state.errorMessage)),
+                    Expanded(child: Text(state.errorMessage, style: TextStyle(color: Colors.white),)),
                   ],
                 );
               }
             case NewestBooksSuccessState():
               {
-                var books = state.bookModel;
-                return ListView.builder(itemCount: 8,itemBuilder: (context, index){
+                //books.items?[index].volumeInfo?.ratingsCount.toString() ??
+                var books = state.items;
+                return ListView.builder(itemCount: books?.length,itemBuilder: (context, index){
                   return BookDetails(
-                    bookImage: books.items?[index].volumeInfo?.imageLinks?.thumbnail?? "No image",
-                    bookTitle: books.items?[index].volumeInfo?.title ?? "No title",
-                    bookRate: books.items?[index].volumeInfo?.averageRating.toString() ?? "No averageRating",
-                    bookPrice: books.items?[index].saleInfo?.listPrice?.amountInMicros.toString()??"No amountInMicros",
-                    bookyear: books.items?[index].etag ?? "No etag",
-                    bookAuthor:books.items?[index].volumeInfo?.authors?[index] ?? "No authors",
+                    bookImage: books?[index].volumeInfo?.imageLinks?.thumbnail?? "No image",
+                    bookTitle: books?[index].volumeInfo?.title ?? "No title",
+                    bookRate:  "4.7",
+                    bookPrice: books?[index].saleInfo?.retailPrice?.amountInMicros.toString()??"1900",
+                    bookyear: books?[index].volumeInfo?.publishedDate ?? "No publishedDate",
+                    bookAuthor:books?[index].volumeInfo?.authors.toString() ?? "No authors",
                   );
                 });
               }

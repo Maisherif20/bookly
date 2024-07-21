@@ -4,11 +4,11 @@ import 'package:injectable/injectable.dart';
 import '../repository_Contract/HomeRepository/bookRepository.dart';
 
 @injectable
-class GetBooksUseCase{
+class GetAllBooksUseCase{
   @factoryMethod
-  BookRepository homeRepository;
-  GetBooksUseCase({required this.homeRepository});
+  BookRepository bookRepository;
+  GetAllBooksUseCase({required this.bookRepository});
   Future<Either<BookModel , String>>invoke(){
-    return homeRepository.fetchNewestBooks();
+    return bookRepository.fetchAllBooks();
   }
 }
