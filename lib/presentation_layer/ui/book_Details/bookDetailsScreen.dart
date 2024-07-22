@@ -1,3 +1,4 @@
+import 'package:bookly/presentation_layer/ui/mayLikeBooks/mayLikeView.dart';
 import 'package:bookly/presentation_layer/ui/mayLikeBooks/mayLikeWidget.dart';
 import 'package:bookly/routes/route.dart';
 import 'package:flutter/cupertino.dart';
@@ -61,7 +62,7 @@ class BookDetailsScreen extends StatelessWidget {
               SizedBox(
                 height: 70.h,
               ),
-              MayLikeWidget(),
+              MayLikeBooksView(),
             ]
           ),
         ),

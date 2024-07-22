@@ -5,5 +5,6 @@ abstract class BookRepository{
   Future<Either<BookModel, String>> fetchNewestBooks();
   Future<Either<BookModel, String>> fetchSimilarBooks();
   Future<Either<BookModel, String>> fetchAllBooks();
+  Future<Either<BookModel, String>> search(String query);
 
 }

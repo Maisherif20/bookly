@@ -33,7 +33,18 @@ class HomeRepositoryImpl extends  BookRepository{
 
   @override
   Future<Either<BookModel, String>> fetchSimilarBooks() async{
-    var result = await getBooksDataSource.getNewestBooks();
+    var result = await getBooksDataSource.getSimilarBooks();
+    return result.fold((response) {
+      return Left(response.toBookModel());
+    }, (error) {
+      print(error);
+      return Right(error);
+    });
+  }
+
+  @override
+  Future<Either<BookModel, String>> search(String query) async{
+    var result = await getBooksDataSource.search(query);
     return result.fold((response) {
       return Left(response.toBookModel());
     }, (error) {

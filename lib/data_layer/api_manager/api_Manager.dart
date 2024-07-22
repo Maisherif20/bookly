@@ -50,4 +50,14 @@ class ApiManager{
     BookModelDto bookModelDto = BookModelDto.fromJson(json);
     return bookModelDto;
   }
+  Future<BookModelDto>search(String query)async{
+    var uri=Uri.https(_baseUrl ,  "/books/v1/volumes",
+        {
+          "q":query,
+        });
+    var response = await http.get(uri);
+    var json = jsonDecode(response.body);
+    BookModelDto bookModelDto = BookModelDto.fromJson(json);
+    return bookModelDto;
+  }
 }
