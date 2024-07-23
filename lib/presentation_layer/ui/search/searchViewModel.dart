@@ -9,7 +9,7 @@ class SearchViewModel extends Cubit<SearchState> {
   @factoryMethod
 
   SearchViewModel({ required this.searchUseCase})
-      : super(SearchLoadingState());
+      : super(InitialState());
   void search(String query) async {
     emit(SearchLoadingState());
     var newestBooks = await searchUseCase.invoke(query);
@@ -27,6 +27,7 @@ class SearchViewModel extends Cubit<SearchState> {
 
 sealed class SearchState {}
 
+class InitialState extends SearchState {}
 class SearchLoadingState extends SearchState {}
 
 class SearchSuccessState extends SearchState {
